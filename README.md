@@ -2,7 +2,7 @@
 
 ### 🛠️ Created & Maintained by **Anubha**
 
-PRO-ALIGN is a complete production-ready AI-powered web application that analyzes a candidate's resume against a Job Description (JD), calculates ATS (Applicant Tracking System) compatibility scores, identifies missing skills, suggests section-specific improvements, and simulates a mock interview prep with detailed AI answers (including STAR frameworks, pitfalls, and coaching tips).
+PRO-ALIGN is a production-ready AI-powered web application that analyzes a candidate's resume against a Job Description (JD), calculates ATS (Applicant Tracking System) compatibility scores, identifies missing skills, suggests section-specific improvements, and simulates a mock interview prep with detailed AI answers (including STAR frameworks, pitfalls, and coaching tips).
 
 ---
 
@@ -11,14 +11,34 @@ PRO-ALIGN is a complete production-ready AI-powered web application that analyze
 
 1. **ATS Score Card**: Visual breakdowns of Keyword Match (40%), Experience (20%), Projects (15%), Education (10%), Certifications (5%), and Semantic Similarity (10%). Includes checks on formatting, grammar rules, and readability.
 2. **Match Score Radial Gauge**: Responsive, animated Recharts gauge showing alignment levels (High, Medium, Low).
-3. **Keyword Gap Checker**: Color-coded matched skills vs. missing gaps side-by-side.
-4. **Resume Rewriter**: One-click AI content optimizer that integrates missing keywords into resume sections (Summary, Experience, Projects, Skills) with strong action verbs.
+3. **Keyword Gap Checker**: Displays matched and missing skills using a color-coded comparison.
+4. **Resume Rewriter**: AI powered content optimizer that integrates missing keywords into resume sections (Summary, Experience, Projects, Skills) with strong action verbs.
 5. **Interview Simulator**: Tailored mock Q&As categorized into Technical, Behavioral, Role-Specific, and HR, with deep-dive STAR method answers, common mistakes, and delivery tips.
 6. **PDF Report Compiler**: Downloadable, professional PDF reports detailing full scores, matching dashboards, and interview prep guides using ReportLab.
 7. **Secure Sessions**: Full JWT (JSON Web Tokens) Authentication (Register, Login, Profile) with secure SQLite (dev) / PostgreSQL (production) configurations.
 8. **Responsive Dark/Light Mode**: Full modern, glassmorphic layout supporting responsive toggles.
 
 ---
+## Technology Stack
+
+### Frontend
+- React.js
+- Vite
+- Tailwind CSS
+- Recharts
+
+### Backend
+- Flask
+- SQLAlchemy
+- JWT Authentication
+
+### Database
+- SQLite (Development)
+- PostgreSQL (Production)
+
+### AI Integration
+- Google Gemini API
+- ReportLab
 
 ## Folder Structure
 
@@ -49,8 +69,8 @@ PRO-ALIGN/
 ## Setup & Running Locally
 
 ### Prerequisites
-- Node.js (v18+)
-- Python (v3.8+)
+- Node.js v18 or later
+- Python v3.8 or later
 
 ### 1. Backend Service
 1. Navigate to the `backend/` directory:
@@ -73,7 +93,7 @@ PRO-ALIGN/
    ```bash
    copy .env.example .env
    ```
-   Add your Google Studio **Gemini API Key** to `GEMINI_API_KEY`.
+   Add your Google AI Studio **Gemini API Key** to `GEMINI_API_KEY`.
 5. Run the server from the root workspace directory `PRO-ALIGN/`:
    ```bash
    python -m backend.app
@@ -85,7 +105,7 @@ PRO-ALIGN/
    ```bash
    cd ../frontend
    ```
-2. Install packages:
+2. Install frontend dependencies:
    ```bash
    npm install
    ```
@@ -100,7 +120,7 @@ PRO-ALIGN/
 ## Cloud Deployment
 
 ### 1. Database (Supabase PostgreSQL)
-1. Initialize a free PostgreSQL database on [Supabase](https://supabase.com/).
+1. Create a free PostgreSQL database on [Supabase](https://supabase.com/).
 2. Fetch the Connection String (transaction mode/direct pooler).
 
 ### 2. Backend (Render)
@@ -129,7 +149,7 @@ PRO-ALIGN/
 | Method | Endpoint | Auth | Description |
 | :--- | :--- | :--- | :--- |
 | **POST** | `/api/auth/signup` | No | Creates a new user account |
-| **POST** | `/api/auth/login` | No | Authenticats and returns a JWT access token |
+| **POST** | `/api/auth/login` | No | Authenticates and returns a JWT access token |
 | **POST** | `/api/auth/forgot-password` | No | Sends recovery instructions |
 | **GET** | `/api/profile` | Yes | Retrieves authenticated user profile details |
 | **POST** | `/api/upload-resume` | Yes | Uploads resume and extracts content |
